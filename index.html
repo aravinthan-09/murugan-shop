@@ -1,0 +1,202 @@
+<!--
+Jasmine Flower Shop - Murugan
+Single-file static website (index.html).
+
+How to use:
+1. Edit the content (business name, phone, address, Opening hours, images) directly below in the HTML.
+2. To host on GitHub Pages:
+   Option A (user site): create a repo named <your-github-username>.github.io and push this file as index.html to the root of the main branch. The site will be available at https://<your-github-username>.github.io
+   Option B (project site): create a repo (any name), push this file to the root, then go to GitHub > Settings > Pages and set the source to main branch (or /docs folder). GitHub Pages will provide a URL like https://<your-github-username>.github.io/<repo-name>/
+
+Basic git commands (replace values):
+  git init
+  git add index.html
+  git commit -m "Initial site for Jasmine Flower Shop"
+  git branch -M main
+  git remote add origin https://github.com/<your-username>/<repo>.git
+  git push -u origin main
+
+This file is mobile responsive and intentionally simple so you can customize it easily.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Jasmine Flower Shop — Murugan</title>
+  <meta name="description" content="Murugan's Jasmine Flower Shop — fresh jasmine garlands, bouquets and floral decorations.">
+  <style>
+    :root{--accent:#6aa84f;--accent-2:#ffd700;--bg:#fff;--muted:#666}
+    *{box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.5;margin:0;background:var(--bg);color:#111}
+    header{background:linear-gradient(90deg, rgba(106,168,79,0.95), rgba(255,215,0,0.9));color:#fff;padding:28px 16px}
+    .container{max-width:1000px;margin:0 auto;padding:20px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:64px;height:64px;border-radius:50%;background:#fff8;padding:6px;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--accent)}
+    h1{font-size:24px;margin:0}
+    nav{margin-left:auto}
+    .top-row{display:flex;align-items:center}
+    .cta{background:#fff;color:#111;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:600}
+
+    .hero{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;padding:24px 0}
+    .hero .text h2{font-size:28px;margin:6px 0}
+    .hero .text p{color:var(--muted);margin:0 0 12px 0}
+    .buttons{display:flex;gap:10px}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .card{border-radius:10px;padding:14px;background:#fff;border:1px solid #eee}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+    img{width:100%;height:auto;border-radius:8px;display:block}
+
+    footer{border-top:1px solid #eee;padding:14px 0;margin-top:20px;color:var(--muted)}
+
+    /* Contact form */
+    form{display:grid;gap:8px}
+    input,textarea{padding:10px;border:1px solid #ddd;border-radius:6px;width:100%;font:inherit}
+    button{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:8px;font-weight:700;cursor:pointer}
+
+    @media(min-width:800px){
+      .hero{grid-template-columns:1fr 420px}
+      h1{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container top-row">
+      <div class="brand">
+        <div class="logo">J</div>
+        <div>
+          <div style="font-size:12px;opacity:.95">Family-owned since 1995</div>
+          <h1>Murugan — Jasmine Flower Shop</h1>
+        </div>
+      </div>
+      <nav>
+        <a class="cta" href="#contact">Call / Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="text">
+        <h2>Fresh jasmine garlands & floral decorations</h2>
+        <p>We hand-pick jasmine daily for garlands, pooja flowers, wedding decorations and fragrance bouquets. Fast local delivery in and around town.</p>
+        <div class="buttons">
+          <a class="cta" href="#contact">Order Now</a>
+          <a style="padding:8px 14px;border-radius:8px;text-decoration:none;border:1px solid var(--accent);color:var(--accent);font-weight:600" href="#gallery">See gallery</a>
+        </div>
+
+        <div style="margin-top:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;max-width:420px">
+          <div class="card">
+            <strong>Opening Hours</strong>
+            <div style="color:var(--muted);font-size:14px">Mon–Sat: 6:00 AM – 9:00 PM<br>Sun: 6:00 AM – 12:00 PM</div>
+          </div>
+          <div class="card">
+            <strong>Phone</strong>
+            <div style="color:var(--muted);font-size:14px">📞 +91 98765 43210</div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <strong>Quick Order</strong>
+          <p style="color:var(--muted);font-size:14px;margin-top:6px">Tell us what you need and we'll call to confirm.</p>
+          <form id="orderForm" onsubmit="submitForm(event)">
+            <input id="name" placeholder="Your name" required>
+            <input id="phone" placeholder="Phone (e.g. +91...)" required>
+            <input id="req" placeholder="What would you like? (eg. 1 garland)" required>
+            <button type="submit">Send order</button>
+          </form>
+        </div>
+      </aside>
+    </section>
+
+    <section id="gallery">
+      <h3>Gallery</h3>
+      <p style="color:var(--muted)">Sample photos — replace these with your shop photos.</p>
+      <div class="gallery" style="margin-top:10px">
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Jasmine garland">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Bouquet">
+        <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Fresh flowers">
+        <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Shop display">
+      </div>
+    </section>
+
+    <section style="margin-top:18px">
+      <h3>Services</h3>
+      <div class="grid" style="margin-top:10px">
+        <div class="card">
+          <strong>Jasmine Garlands</strong>
+          <p style="color:var(--muted);margin:8px 0 0">Freshly made — perfect for pooja and daily wear.</p>
+        </div>
+        <div class="card">
+          <strong>Wedding & Events</strong>
+          <p style="color:var(--muted);margin:8px 0 0">Custom floral decor for ceremonies and celebrations.</p>
+        </div>
+        <div class="card">
+          <strong>Daily Delivery</strong>
+          <p style="color:var(--muted);margin:8px 0 0">Morning deliveries available within local areas.</p>
+        </div>
+        <div class="card">
+          <strong>Fragrant Bouquets</strong>
+          <p style="color:var(--muted);margin:8px 0 0">Hand-tied bouquets with jasmine and seasonal flowers.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:20px;display:grid;grid-template-columns:1fr;gap:12px">
+      <h3>Contact & Location</h3>
+      <div style="display:grid;grid-template-columns:1fr;gap:12px">
+        <div class="card">
+          <strong>Address</strong>
+          <div style="color:var(--muted);margin-top:6px">Murugan Jasmine Shop, Market Street, YourTown</div>
+        </div>
+
+        <div class="card">
+          <strong>Send us a message</strong>
+          <form action="mailto:youremail@example.com" method="post" enctype="text/plain" style="margin-top:8px">
+            <input name="Name" placeholder="Your name">
+            <input name="Phone" placeholder="Phone">
+            <textarea name="Message" rows="4" placeholder="What do you need?"></textarea>
+            <button type="submit">Send Email</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <strong>Map</strong>
+          <div style="color:var(--muted);margin-top:8px">Replace the iframe below with your Google Maps embed (optional).</div>
+          <!-- Example: replace src with your Google Maps embed URL -->
+          <div style="margin-top:8px">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019128..." width="100%" height="200" style="border:0;border-radius:8px" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+        <div>© <strong>Murugan — Jasmine Flower Shop</strong> · All rights reserved</div>
+        <div style="color:var(--muted);font-size:14px">Made with care • Phone: +91 98765 43210</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    function submitForm(e){
+      e.preventDefault();
+      const name=document.getElementById('name').value.trim();
+      const phone=document.getElementById('phone').value.trim();
+      const req=document.getElementById('req').value.trim();
+      if(!name||!phone||!req){alert('Please fill all fields');return}
+      // For now we open the user's mail client using mailto — update email below
+      const email='youremail@example.com';
+      const subject=encodeURIComponent('New order from website');
+      const body=encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nRequest: ${req}`);
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
